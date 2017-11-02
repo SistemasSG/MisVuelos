@@ -6,16 +6,16 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Lista de Vuelos...." TextColor="Black"></Label>
-            <ListView x:Name="ListaVuelos" ItemsSource="{Binding ListaVuelos}" HasUnevenRows="False">
+            <ListView x:Name="ListaVuelos" ItemsSource="{Binding ListaVuelos}" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="25"></RowDefinition>
-                                        <RowDefinition Height="25"></RowDefinition>
-                                        <RowDefinition Height="25"></RowDefinition>
+                                        <RowDefinition Height="20"></RowDefinition>
+                                        <RowDefinition Height="20"></RowDefinition>
+                                        <RowDefinition Height="20"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid Grid.Row="0">
                                         <Grid.ColumnDefinitions>
