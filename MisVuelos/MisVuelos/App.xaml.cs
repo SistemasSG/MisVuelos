@@ -30,8 +30,8 @@ namespace MisVuelos
             InitializeComponent();
             //database.EliminarVuelos();
             IniciarVuelos();
-            //MainPage = new MisVuelos.MainPage();
-            MainPage = new ListaVuelosPage();
+            //MainPage = new ListaVuelosPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         private static void IniciarVuelos()

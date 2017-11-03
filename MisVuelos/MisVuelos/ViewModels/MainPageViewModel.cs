@@ -12,14 +12,37 @@ namespace MisVuelos.ViewModels
     {
         public MainPageViewModel()
         {
-            
+            CargarBusquedas();
         }
 
-        public ObservableCollection<Data.MisVuelosDataBase> ListaCiudades
+        public List<Models.Aerolineas> ListaAerolineas
         {
             get;
             set;
         }
+
+        public List<Models.Ciudades> ListaCiudades
+        {
+            get;
+            set;
+        }
+
+        private void CargarBusquedas()
+        {
+            try
+            {
+                ListaAerolineas = App.Database.GetAerolineas().ToList();
+                ListaCiudades = App.Database.GetCiudades().ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
+
 
 
     }

@@ -41,12 +41,10 @@
     <Compile Include="Data\MisVuelosDataBase.cs" />
     <Compile Include="IFileHelper.cs" />
     <Compile Include="Infrastructure\InstaceLocator.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\Datos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ListaVuelosViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\ListaVuelosPage.xaml.cs">
       <DependentUpon>ListaVuelosPage.xaml</DependentUpon>
     </Compile>
@@ -55,10 +53,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

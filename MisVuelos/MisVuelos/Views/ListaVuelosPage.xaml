@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MisVuelos.Views.ListaVuelosPage"
-             BindingContext="{Binding Main,Source={StaticResource Locator}}">
+             BindingContext="{Binding MainVuelos, Source={Binding Locator}}">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Lista de Vuelos...." TextColor="Black"></Label>
-            <ListView x:Name="ListaVuelos" ItemsSource="{Binding ListaVuelos}" HasUnevenRows="true">
+            <ListView x:Name="ListaVuelos" ItemsSource="{Binding Lista}" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

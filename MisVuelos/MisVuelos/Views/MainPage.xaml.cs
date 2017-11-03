@@ -16,5 +16,29 @@ namespace MisVuelos.Views
         {
             InitializeComponent();
         }
+
+        private void Buscar_Clicked(object sender, EventArgs e)
+        {
+            Validaciones();
+        }
+
+
+        private void Validaciones()
+
+        {
+
+            string po = pck_origen.Items[pck_origen.SelectedIndex].Trim();
+            string de = pck_destino.Items[pck_destino.SelectedIndex].Trim();
+
+            if (po == de)
+            {
+                DisplayAlert("Error", "El origen y el destino no pueden ser iguales.", "Reintentar");
+            }
+            else
+            {
+                Navigation.PushAsync(new ListaVuelosPage(po,de));
+            }
+        }
+
     }
 }

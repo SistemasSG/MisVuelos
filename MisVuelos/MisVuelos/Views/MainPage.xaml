@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MisVuelos.Views.MainPage">
+             x:Class="MisVuelos.Views.MainPage"
+             BindingContext="{Binding MainPage,Source={StaticResource Locator}}">
     <ContentPage.Content>
-        <StackLayout Padding="0,30,30,0">
-            <Label Text="Mis vuelos!"  HorizontalOptions="Center"/>
-        </StackLayout>
-        <StackLayout>
-            <Entry Placeholder="Origen" PlaceholderColor="LightGray" FontSize="Small" Margin="5,10,10,5"></Entry>
-            <Entry Placeholder="Destino" PlaceholderColor="LightGray" FontSize="Small" Margin="5,10,10,5"></Entry>
-            <DatePicker Margin="5,10,10,5"></DatePicker>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Mis vuelos" Margin="10,30,10,30" FontSize="Large"/>
+            <Picker x:Name="pck_origen" ItemsSource="{Binding ListaCiudades}" ItemDisplayBinding="{Binding ciudad}" Title="Origen" Margin="5,10,10,5"></Picker>
+            <Picker x:Name="pck_destino" ItemsSource="{Binding ListaCiudades}" ItemDisplayBinding="{Binding ciudad}" Title="Destino" Margin="5,10,10,5"></Picker>
+            <DatePicker x:Name="dp_fecha"></DatePicker>
+            <Button x:Name="Buscar" Text="Buscar vuelos..." Margin="10,30,10,30"  Clicked="Buscar_Clicked"  ></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

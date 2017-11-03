@@ -9,11 +9,12 @@ namespace MisVuelos.Infrastructure
 {
     public class InstaceLocator
     {
-        public ListaVuelosViewModel Main { get; set; }
-
+        public ListaVuelosViewModel MainVuelos { get; set; }
+        public MainPageViewModel MainPage { get; set; }
         public InstaceLocator()
         {
-            Main = new ListaVuelosViewModel();
+            MainPage = new MainPageViewModel();
+            MainVuelos = new ListaVuelosViewModel();
         }
 
         
