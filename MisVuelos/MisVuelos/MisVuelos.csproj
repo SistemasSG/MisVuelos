@@ -50,6 +50,9 @@
     <Compile Include="Views\ListaVuelosPage.xaml.cs">
       <DependentUpon>ListaVuelosPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -95,6 +98,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ListaVuelosPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

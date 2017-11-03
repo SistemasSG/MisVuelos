@@ -28,6 +28,7 @@ namespace MisVuelos
         public App()
         {
             InitializeComponent();
+            //database.EliminarVuelos();
             IniciarVuelos();
             //MainPage = new MisVuelos.MainPage();
             MainPage = new ListaVuelosPage();
@@ -35,30 +36,26 @@ namespace MisVuelos
 
         private static void IniciarVuelos()
         {
-            //database.EliminarVuelos();
             List<Vuelos> v = new List<Vuelos>();
             v = database.GetVuelosAsync().Result.ToList();
+            Random rnd = new Random();
             if (v.Count == 0)
             {
-                string[] aerolineas = { "Aserca", "Conviasa", "Laser", "Venezolana", "Avior" };
-                string[] destinos = { "MCBO", "CCS", "BTO", "PTOO", "VAL", "MAT", "MARG" };
+
+                List<Aerolineas> aerolineas = database.GetAerolineas();
+                List<Ciudades> destinos = database.GetCiudades();
 
                 for (int i = 0; i < 50; i++)
                 {
-                    Random rnd = new Random();
-                    int mes = rnd.Next(1, 12);
-                    //Por razones de tiempo no valido año bisiesto
-                    int dia = rnd.Next(1, (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12 ? 31 : 30));
-                    int hora = rnd.Next(0, 23);
-                    int minuto = rnd.Next(1, 59);
-                    DateTime fec_sal = new DateTime(DateTime.Now.Year, mes, dia, hora, minuto, 0);
+ 
+                    DateTime fec_sal = DateTime.Now.AddDays(rnd.Next(1, 30)).AddHours(rnd.Next(1, 23)).AddMinutes(rnd.Next(1,15));  //new DateTime(DateTime.Now.Year, mes, dia, hora, minuto, 0);
 
-                    string _origen = destinos[rnd.Next(1, 7)];
-                    string _destino = destinos[rnd.Next(1, 7)];
-                    string _aerolinea = aerolineas[rnd.Next(1, 5)];
+                    string _origen = destinos[rnd.Next(1, 7)].ciudad;
+                    string _destino = destinos[rnd.Next(1, 7)].ciudad;
+                    string _aerolinea = aerolineas[rnd.Next(1, 5)].aerolinea;
                     while (_destino == _origen)
                     {
-                        _destino = destinos[rnd.Next(1, 7)];
+                        _destino = destinos[rnd.Next(1, 7)].ciudad;
                     }
 
                     database.RegistrarVuelo(new Vuelos

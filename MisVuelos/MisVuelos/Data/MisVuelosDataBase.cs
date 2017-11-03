@@ -78,6 +78,34 @@ namespace MisVuelos.Data
             }
         }
 
+        public List<Ciudades> GetCiudades()
+        {
+            List<Ciudades> c = new List<Ciudades>
+            {
+                new Ciudades { ciudad = "MBO" },
+                new Ciudades { ciudad = "CCS" },
+                new Ciudades { ciudad = "PTO" },
+                new Ciudades { ciudad = "MAT" },
+                new Ciudades { ciudad = "POR" },
+                new Ciudades { ciudad = "VAL" },
+                new Ciudades { ciudad = "BTO" }
+            };
+            return c;
+
+        }
+
+        public List<Aerolineas> GetAerolineas()
+        {
+            List<Aerolineas> a = new List<Aerolineas>
+            {
+                new Aerolineas { aerolinea = "Aserca" },
+                new Aerolineas { aerolinea = "Conviasa" },
+                new Aerolineas { aerolinea = "Laser" },
+                new Aerolineas { aerolinea = "Venezolana" },
+                new Aerolineas { aerolinea = "Avior" }
+            };
+            return a;
+        }
 
     }
 }

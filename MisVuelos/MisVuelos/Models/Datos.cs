@@ -40,4 +40,13 @@ namespace MisVuelos.Models
         public int asientos { get; set; }
     }
 
+    public class Ciudades
+    {
+        public string ciudad { get; set; }
+    }
+
+    public class Aerolineas
+    {
+        public string aerolinea { get; set; }
+    }
 }

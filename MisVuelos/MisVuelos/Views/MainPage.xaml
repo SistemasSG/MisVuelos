@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MisVuelos.Views.MainPage">
+    <ContentPage.Content>
+        <StackLayout Padding="0,30,30,0">
+            <Label Text="Mis vuelos!"  HorizontalOptions="Center"/>
+        </StackLayout>
+        <StackLayout>
+            <Entry Placeholder="Origen" PlaceholderColor="LightGray" FontSize="Small" Margin="5,10,10,5"></Entry>
+            <Entry Placeholder="Destino" PlaceholderColor="LightGray" FontSize="Small" Margin="5,10,10,5"></Entry>
+            <DatePicker Margin="5,10,10,5"></DatePicker>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
