@@ -24,7 +24,7 @@ namespace MisVuelos
                 return database;
             }
         }
-
+        public Page ReservarPage { get; set; }
         public App()
         {
             InitializeComponent();
@@ -32,6 +32,8 @@ namespace MisVuelos
             IniciarVuelos();
             //MainPage = new ListaVuelosPage();
             MainPage = new NavigationPage(new MainPage());
+            //ReservarPage = new NavigationPage(new ReservarPage());
+
         }
 
         private static void IniciarVuelos()

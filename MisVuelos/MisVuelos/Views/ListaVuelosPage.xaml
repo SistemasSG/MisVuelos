@@ -18,6 +18,7 @@
                                         <RowDefinition Height="20"></RowDefinition>
                                         <RowDefinition Height="20"></RowDefinition>
                                         <RowDefinition Height="20"></RowDefinition>
+                                        <RowDefinition Height="20"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid Grid.Row="0">
                                         <Grid.ColumnDefinitions>
@@ -59,7 +60,14 @@
                                         <Label Grid.Column="0" Text="Hora: " TextColor="Black"></Label>
                                         <Label Grid.Column="1" Text="{Binding fecha, StringFormat='{0:hh:mm tt}' }" TextColor="Black"></Label>
                                     </Grid>
-
+                                    <Grid Grid.Row="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="90"></ColumnDefinition>
+                                            <ColumnDefinition Width="200"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="Precio: " TextColor="Black"></Label>
+                                        <Label Grid.Column="1" Text="{Binding precio, StringFormat='{0:F2}' }" TextColor="Black"></Label>
+                                    </Grid>
                                 </Grid>
                             </StackLayout>
                         </ViewCell>

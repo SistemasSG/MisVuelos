@@ -32,9 +32,19 @@ namespace MisVuelos.Data
             return database.Table<Vuelos>().Where(x => x.ID == id).FirstOrDefaultAsync();
         }
 
-        public Task<List<Reservaciones>> GetReservacionesAsync(int cedula = 0, string reserva = "" )
+        public Task<List<Reservaciones>> GetReservacionesAsync()
         {
-            return database.Table<Reservaciones>().Where( x => x.id_cliente == cedula || x.reserva == reserva.Trim()).ToListAsync();
+            return database.Table<Reservaciones>().ToListAsync();
+        }
+
+        public Task<List<Reservaciones>> GetReservacionAsync(int cedula = 0, string reserva = "")
+        {
+            return database.Table<Reservaciones>().Where(x => x.id_cliente == cedula || x.reserva.Trim() == reserva.Trim()).ToListAsync();
+        }
+
+        public Task<List<Clientes>> GetClientesAsync()
+        {
+            return database.Table<Clientes>().ToListAsync();
         }
 
         public Task<int> RegistrarReservacion(Reservaciones item)

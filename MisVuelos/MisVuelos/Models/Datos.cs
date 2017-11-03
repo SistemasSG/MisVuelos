@@ -27,6 +27,8 @@ namespace MisVuelos.Models
         public int ID { get; set; }
 
         public string Nombre { get; set; }
+        public int Cedula { get; set; }
+        public int Edad { get; set; }
     }
 
     public class Reservaciones
@@ -38,6 +40,7 @@ namespace MisVuelos.Models
         public int id_vuelo { get; set; }
         public int id_cliente { get; set; }
         public int asientos { get; set; }
+        public decimal pago { get; set; }
     }
 
     public class Ciudades

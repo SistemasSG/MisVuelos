@@ -44,19 +44,20 @@ namespace MisVuelos.Views
                     Lista.Add(item);
                 }
                 ListaVuelos.ItemsSource = Lista;
-                ListaVuelos.ItemSelected += ClickedEvent;
+                ListaVuelos.ItemSelected += ListaVuelos_ItemSelected;
 
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }
 
-        private void ClickedEvent(object sender, SelectedItemChangedEventArgs e)
+        private void ListaVuelos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            DisplayAlert("Reservar", (ListaVuelos.SelectedItem as Models.Vuelos).destino + " - " + (ListaVuelos.SelectedItem as Models.Vuelos).origen, "Cerrar");
+            var Id_vuelo = (ListaVuelos.SelectedItem as Models.Vuelos).ID;
+            Navigation.PushAsync(new ReservarPage(Id_vuelo));
         }
+
     }
 }
