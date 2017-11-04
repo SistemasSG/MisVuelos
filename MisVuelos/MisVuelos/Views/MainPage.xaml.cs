@@ -20,12 +20,6 @@ namespace MisVuelos.Views
             pck_origen.Focus();
         }
 
-        private void Buscar_Clicked(object sender, EventArgs e)
-        {
-            Validaciones();
-        }
-
-
         private void Validaciones()
 
         {
@@ -46,19 +40,24 @@ namespace MisVuelos.Views
                 {
                     if (App.Database.GetVuelosAsync().Result.Where
                         (
-                            x => x.origen.Trim() == po.Trim() && 
-                            x.destino.Trim() == de.Trim() && 
+                            x => x.origen.Trim() == po.Trim() &&
+                            x.destino.Trim() == de.Trim() &&
                             x.fecha.Value.Day == dp_fecha.Date.Day &&
                             x.fecha.Value.Month == dp_fecha.Date.Month &&
-                            x.fecha.Value.Year == dp_fecha.Date.Year 
+                            x.fecha.Value.Year == dp_fecha.Date.Year
                             ).ToList().Count > 0)
-                        Navigation.PushAsync(new ListaVuelosPage(po, de, dp_fecha.Date.Day, dp_fecha.Date.Month , dp_fecha.Date.Year));
+                        Navigation.PushAsync(new ListaVuelosPage(po, de, dp_fecha.Date.Day, dp_fecha.Date.Month, dp_fecha.Date.Year));
                     else
                         DisplayAlert("Error", "No hay vuelos disponibles por el momento.", "OK");
                 }
             }
 
-            
+
+        }
+
+        private void Buscar_Clicked(object sender, EventArgs e)
+        {
+            Validaciones();
         }
 
     }

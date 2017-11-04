@@ -11,33 +11,33 @@ namespace MisVuelos.ViewModels
     {
         public ListaVuelosViewModel()
         {
-            CargarVuelos();
+            //CargarVuelos();
         }
 
-        public ObservableCollection<Models.Vuelos> ListaVuelos
-        {
-            get;
-            set;
-        }
+        //public ObservableCollection<Models.Vuelos> ListaVuelos
+        //{
+        //    get;
+        //    set;
+        //}
 
-        private async void CargarVuelos()
-        {
-            try
-            {
-                //ListaVuelos = new ObservableCollection<Models.Vuelos>();
-                var client = await App.Database.GetVuelosAsync();
-                var lista = client.ToList();
+        //private async void CargarVuelos()
+        //{
+        //    try
+        //    {
+        //        ListaVuelos = new ObservableCollection<Models.Vuelos>();
+        //        var client = await App.Database.GetVuelosAsync();
+        //        var lista = client.ToList();
 
-                foreach (var item in lista)
-                {
-                    ListaVuelos.Add(item);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
+        //        foreach (var item in lista)
+        //        {
+        //            ListaVuelos.Add(item);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //}
 
     }
 }

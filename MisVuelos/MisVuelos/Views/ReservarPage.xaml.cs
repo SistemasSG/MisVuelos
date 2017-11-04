@@ -122,7 +122,6 @@ namespace MisVuelos.Views
                 return true;
         }
 
-
         private void reservar_Clicked(object sender, EventArgs e)
         {
             if(ValidarCampos() == false)
