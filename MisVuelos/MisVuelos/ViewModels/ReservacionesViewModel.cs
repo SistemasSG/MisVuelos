@@ -28,7 +28,9 @@ namespace MisVuelos.ViewModels
                 Datos_reserva dr;
                 Vuelos vuelo;
                 Clientes cliente;
-                ListaDatos_Reserva.Clear();
+
+                List<Reservaciones> Lista_reservaciones = new List<Reservaciones>();
+                //ListaDatos_Reserva.Clear();
 
                 if (cod_reserva.Trim().Length > 0 && cod_reserva != null)
                 {
@@ -57,7 +59,7 @@ namespace MisVuelos.ViewModels
                 }
                 else
                 {
-                    List<Reservaciones> Lista_reservaciones = App.Database.GetReservacionAsync(nro_ci, "").Result.ToList();
+                    Lista_reservaciones = App.Database.GetReservacionAsync(nro_ci, "").Result.ToList();
                     cliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == nro_ci).FirstOrDefault();
 
                     foreach (var item in Lista_reservaciones)
@@ -82,8 +84,18 @@ namespace MisVuelos.ViewModels
 
                         ListaDatos_Reserva.Add(dr);
                     }
-                    int _id_cliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == Convert.ToInt32(nro_ci)).FirstOrDefault().ID;
-                    var vuelos = App.Database.GetVuelosAsync().Result.ToList();
+
+                    bool ExisteCliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == Convert.ToInt32(nro_ci)).ToList().Count > 0 ? true : false;
+
+                    if ( ExisteCliente == true)
+                    {
+                        int _id_cliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == Convert.ToInt32(nro_ci)).FirstOrDefault().ID;
+                        var vuelos = App.Database.GetVuelosAsync().Result.ToList();
+                    }
+                    else
+                    {
+                        DisplayAlert("Error", "El cliente no existe", "OK");
+                    }
                 }
             }
             catch (Exception ex)

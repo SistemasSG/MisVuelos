@@ -63,7 +63,7 @@ namespace MisVuelos.Views
         private void ListaVuelos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             ((ListView)sender).SelectedItem = null;
-            if (((ListView)sender).SelectedItem == null)
+            if (((ListView)sender).SelectedItem != null)
             {
                 var Id_vuelo = (ListaVuelos.SelectedItem as Models.Vuelos).ID;
                 Navigation.PushAsync(new ReservarPage(Id_vuelo));

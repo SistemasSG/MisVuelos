@@ -70,13 +70,40 @@ namespace MisVuelos.Views
             {
                 if (codigo.Text.Trim().Length == 0)
                 {
-                    DisplayAlert("Error", "Debe ingresar un nuemero de documento", "OK");
+                    DisplayAlert("Error", "Debe ingresar un numero de documento", "OK");
                 }
                 else
                 {
                     int ci = pck_tipo.Items[pck_tipo.SelectedIndex].Trim() == "Cedula" ? Convert.ToInt32(codigo.Text) : 0;
                     string reserva = pck_tipo.Items[pck_tipo.SelectedIndex].Trim() == "Cedula" ? "" : codigo.Text.Trim();
-                    Navigation.PushAsync(new ReservacionesPage(ci, reserva));
+
+                    bool ExisteCliente;
+                    bool ExisteReserva;
+
+                    if (ci > 0)
+                    {
+                        ExisteCliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == Convert.ToInt32(codigo.Text.Trim())).ToList().Count > 0 ? true : false;
+                        if (ExisteCliente == false)
+                        {
+                            DisplayAlert("Error", "El cliente no existe", "OK");
+                        }
+                        else
+                        {
+                            Navigation.PushAsync(new ReservacionesPage(ci, reserva));
+                        }
+                    }
+                    else
+                    {
+                        ExisteReserva = App.Database.GetReservacionAsync(0, codigo.Text.Trim()).Result.ToList().Count > 0 ? true : false;
+                        if (ExisteReserva == false)
+                        {
+                            DisplayAlert("Error", "El codigo de reserva no existe", "OK");
+                        }
+                        else
+                        {
+                            Navigation.PushAsync(new ReservacionesPage(ci, reserva));
+                        }
+                    }
                 }
             }
         }

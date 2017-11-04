@@ -12,7 +12,8 @@ namespace MisVuelos.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReservarPage : ContentPage
     {
-        private int _id_vuelo;
+        int _id_vuelo;
+        int _id_cliente;
 
         public ReservarPage(int Id)
         {
@@ -22,7 +23,7 @@ namespace MisVuelos.Views
 
         private bool ValidarReservasExistentes()
         {
-            int _id_cliente = App.Database.GetClientesAsync().Result.Where( x=> x.Cedula == Convert.ToInt32(cedula.Text)).FirstOrDefault().ID;
+            //int _id_cliente = App.Database.GetClientesAsync().Result.Where( x=> x.Cedula == Convert.ToInt32(cedula.Text)).FirstOrDefault().ID;
             int reservas = App.Database.GetReservacionAsync(_id_cliente).Result.Where
                         (
                             x => x.fecha.Day == DateTime.Now.Day &&
@@ -38,21 +39,21 @@ namespace MisVuelos.Views
         {
             try
             {
+                var n = nombre.Text.ToString();
+                var c = Convert.ToInt32(cedula.Text);
+                var e = Convert.ToInt32(edad.Text);
+                _id_cliente = await App.Database.RegistrarCliente(
+                    new Models.Clientes
+                    {
+                        Nombre = n,
+                        Cedula = c,
+                        Edad = e
+                    }
+                    );
                 if (ValidarReservasExistentes() == true)
                     await DisplayAlert("Mis Vuelos", "No puede hacer mas reservas por el dia de hoy." , "OK");
                 else
                 {
-                    var n = nombre.Text.ToString();
-                    var c = Convert.ToInt32(cedula.Text);
-                    var e = Convert.ToInt32(edad.Text);
-                    var _id_cliente = await App.Database.RegistrarCliente(
-                        new Models.Clientes
-                        {
-                            Nombre = n,
-                            Cedula = c,
-                            Edad = e
-                        }
-                        );
                     var client = await App.Database.GetClientesAsync();
                     decimal _precioasiento = App.Database.GetVuelosAsync().Result.Where(x => x.ID == Id_vuelo).FirstOrDefault().precio;
                     var _reserva = Guid.NewGuid();
