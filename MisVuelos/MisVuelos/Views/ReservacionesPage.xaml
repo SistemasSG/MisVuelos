@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MisVuelos.Views.ReservacionesPage">
+             x:Class="MisVuelos.Views.ReservacionesPage"
+             BindingContext="{Binding CargarDatos}"
+             >
     <ContentPage.Content>
-        <StackLayout Padding="10,30,30,10">
-            <Label Text="Mis Reservaciones" />
-        </StackLayout>
         <StackLayout Padding="10,30,30,10">
             <ListView x:Name="Reservaciones" ItemsSource="{Binding ListaDatos_Reserva}" HasUnevenRows="true">
                 <ListView.ItemTemplate>

@@ -33,6 +33,7 @@ namespace MisVuelos.ViewModels
             {
                 ListaAerolineas = App.Database.GetAerolineas().ToList();
                 ListaCiudades = App.Database.GetCiudades().ToList();
+
             }
             catch (Exception ex)
             {

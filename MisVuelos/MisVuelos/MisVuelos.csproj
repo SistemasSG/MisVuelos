@@ -43,7 +43,6 @@
     <Compile Include="Infrastructure\InstaceLocator.cs" />
     <Compile Include="Models\Datos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\ListaVuelosViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\ReservacionesViewModel.cs" />
     <Compile Include="Views\ListaVuelosPage.xaml.cs">
