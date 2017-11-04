@@ -18,7 +18,8 @@ namespace MisVuelos.Views
         {
             InitializeComponent();
             CargarDatos = new ReservacionesViewModel(cedula, reserva);
-
+            BindingContext = CargarDatos;
+            var a = 0;
         }
     }
 }

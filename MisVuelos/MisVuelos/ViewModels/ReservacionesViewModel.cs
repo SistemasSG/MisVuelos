@@ -31,7 +31,7 @@ namespace MisVuelos.ViewModels
 
                 List<Reservaciones> Lista_reservaciones = new List<Reservaciones>();
                 //ListaDatos_Reserva.Clear();
-
+                ListaDatos_Reserva = new ObservableCollection<Datos_reserva>();
                 if (cod_reserva.Trim().Length > 0 && cod_reserva != null)
                 {
                     Reservaciones reservacion = App.Database.GetReservacionAsync(0, cod_reserva.Trim()).Result.FirstOrDefault();
@@ -59,7 +59,8 @@ namespace MisVuelos.ViewModels
                 }
                 else
                 {
-                    Lista_reservaciones = App.Database.GetReservacionAsync(nro_ci, "").Result.ToList();
+                    var x_id_cliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == nro_ci).Select(x => x.ID).FirstOrDefault();
+                    Lista_reservaciones = App.Database.GetReservacionAsync(x_id_cliente, "").Result.ToList();
                     cliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == nro_ci).FirstOrDefault();
 
                     foreach (var item in Lista_reservaciones)
@@ -73,7 +74,7 @@ namespace MisVuelos.ViewModels
                             asientos = item.asientos,
                             pago = item.pago,
                             fecha = item.fecha,
-                            aerolinea = vuelo.aerolinea,
+                            aerolinea = "Conviasa",
                             origen = vuelo.origen,
                             destino = vuelo.destino,
                             fecha_vuelo = vuelo.fecha,
