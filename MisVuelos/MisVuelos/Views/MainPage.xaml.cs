@@ -62,7 +62,31 @@ namespace MisVuelos.Views
 
         private void buscar_reserva_Clicked(object sender, EventArgs e)
         {
+            if (pck_tipo.SelectedIndex == -1)
+            {
+                DisplayAlert("Error", "Elija un tipo de documento", "OK");
+            }
+            else
+            {
+                if (codigo.Text.Trim().Length == 0)
+                {
+                    DisplayAlert("Error", "Debe ingresar un nuemero de documento", "OK");
+                }
+                else
+                {
+                    int ci = pck_tipo.Items[pck_tipo.SelectedIndex].Trim() == "Cedula" ? Convert.ToInt32(codigo.Text) : 0;
+                    string reserva = pck_tipo.Items[pck_tipo.SelectedIndex].Trim() == "Cedula" ? "" : codigo.Text.Trim();
+                    Navigation.PushAsync(new ReservacionesPage(ci, reserva));
+                }
+            }
+        }
 
+        private void pck_tipo_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (pck_tipo.SelectedIndex != -1)
+            {
+                codigo.Keyboard = pck_tipo.Items[pck_tipo.SelectedIndex].Trim() == "Cedula" ? Keyboard.Numeric : Keyboard.Default;
+            }
         }
     }
 }

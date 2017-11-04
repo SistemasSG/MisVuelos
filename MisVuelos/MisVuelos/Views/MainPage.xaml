@@ -4,9 +4,10 @@
              x:Class="MisVuelos.Views.MainPage"
              BindingContext="{Binding MainPage,Source={StaticResource Locator}}">
     <ContentPage.Content>
+        
         <StackLayout VerticalOptions="Center">
-            <StackLayout>
-                <Picker x:Name="dp_tipo" Margin="10,0,10,0" HorizontalOptions="Start" WidthRequest="90">
+            <StackLayout Spacing="0" BackgroundColor="White" Orientation="Horizontal" >
+                <Picker x:Name="pck_tipo" Margin="10,0,10,0" HorizontalOptions="Start" WidthRequest="90" Unfocused="pck_tipo_Unfocused" >
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Cedula</x:String>
@@ -14,10 +15,12 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-                <Entry x:Name="cododigo" Keyboard="Default" Margin="10,0,10,0"></Entry>
-                <Button x:Name="buscar_reserva" Text="Buscar reservas" Clicked="buscar_reserva_Clicked" Margin="10,0,10,0"></Button>
+                <Label Text="-" Margin="1,0,10,0"></Label>
+                <Entry x:Name="codigo" Keyboard="Default" Margin="10,0,10,0" HorizontalOptions="CenterAndExpand" WidthRequest="200"></Entry>
             </StackLayout>
-
+            <Button x:Name="buscar_reserva" BorderColor="Purple" BackgroundColor="Silver" Text="Buscar reservas" Clicked="buscar_reserva_Clicked" Margin="10,0,10,0" WidthRequest="180" HorizontalOptions="Center"></Button>
+            
+            
             <Label Text="Mis vuelos" Margin="10,10,10,10" FontSize="Large"/>
             <Picker x:Name="pck_origen" ItemsSource="{Binding ListaCiudades}" ItemDisplayBinding="{Binding ciudad}" Title="Origen" Margin="5,10,10,5"></Picker>
             <Picker x:Name="pck_destino" ItemsSource="{Binding ListaCiudades}" ItemDisplayBinding="{Binding ciudad}" Title="Destino" Margin="5,10,10,5"></Picker>

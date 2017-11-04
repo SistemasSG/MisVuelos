@@ -30,7 +30,7 @@ namespace MisVuelos.ViewModels
                 Clientes cliente;
                 ListaDatos_Reserva.Clear();
 
-                if (cod_reserva.Trim().Length > 0)
+                if (cod_reserva.Trim().Length > 0 && cod_reserva != null)
                 {
                     Reservaciones reservacion = App.Database.GetReservacionAsync(0, cod_reserva.Trim()).Result.FirstOrDefault();
                     vuelo = App.Database.GetVueloAsync(reservacion.id_vuelo).Result;
@@ -89,7 +89,7 @@ namespace MisVuelos.ViewModels
             catch (Exception ex)
             {
 
-                throw;
+                DisplayAlert("Error", ex.Message, "OK");
             }
 
         }

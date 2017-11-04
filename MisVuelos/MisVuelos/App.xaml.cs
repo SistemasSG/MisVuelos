@@ -31,8 +31,8 @@ namespace MisVuelos
         {
             InitializeComponent();
             //database.EliminarVuelos();
-            database.EliminarReservaciones();
-            database.EliminarClientes();
+            //database.EliminarReservaciones();
+            //database.EliminarClientes();
 
             IniciarVuelos();
             //MainPage = new ListaVuelosPage();
