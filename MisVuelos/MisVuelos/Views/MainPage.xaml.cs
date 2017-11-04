@@ -60,5 +60,9 @@ namespace MisVuelos.Views
             Validaciones();
         }
 
+        private void buscar_reserva_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -5,7 +5,20 @@
              BindingContext="{Binding MainPage,Source={StaticResource Locator}}">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
-            <Label Text="Mis vuelos" Margin="10,30,10,30" FontSize="Large"/>
+            <StackLayout>
+                <Picker x:Name="dp_tipo" Margin="10,0,10,0" HorizontalOptions="Start" WidthRequest="90">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Cedula</x:String>
+                            <x:String>Reserva</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Entry x:Name="cododigo" Keyboard="Default" Margin="10,0,10,0"></Entry>
+                <Button x:Name="buscar_reserva" Text="Buscar reservas" Clicked="buscar_reserva_Clicked" Margin="10,0,10,0"></Button>
+            </StackLayout>
+
+            <Label Text="Mis vuelos" Margin="10,10,10,10" FontSize="Large"/>
             <Picker x:Name="pck_origen" ItemsSource="{Binding ListaCiudades}" ItemDisplayBinding="{Binding ciudad}" Title="Origen" Margin="5,10,10,5"></Picker>
             <Picker x:Name="pck_destino" ItemsSource="{Binding ListaCiudades}" ItemDisplayBinding="{Binding ciudad}" Title="Destino" Margin="5,10,10,5"></Picker>
             <DatePicker x:Name="dp_fecha"></DatePicker>

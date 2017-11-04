@@ -4,9 +4,6 @@
              x:Class="MisVuelos.Views.ReservacionesPage">
     <ContentPage.Content>
         <StackLayout Padding="10,30,30,10">
-            <Label Text="Mis Reservaciones" />
-        </StackLayout>
-        <StackLayout Padding="10,30,30,10">
             <ListView x:Name="Reservaciones" ItemsSource="{Binding ListaDatos_Reserva}" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
