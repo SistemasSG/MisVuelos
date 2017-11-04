@@ -35,7 +35,6 @@ namespace MisVuelos.ViewModels
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }

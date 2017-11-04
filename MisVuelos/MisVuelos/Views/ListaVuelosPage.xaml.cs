@@ -49,7 +49,7 @@ namespace MisVuelos.Views
             }
             catch (Exception ex)
             {
-                throw;
+                await DisplayAlert("Error", ex.InnerException.Message, "Cerrar");
             }
         }
 

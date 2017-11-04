@@ -92,13 +92,13 @@ namespace MisVuelos.Data
         {
             List<Ciudades> c = new List<Ciudades>
             {
-                new Ciudades { ciudad = "MBO" },
-                new Ciudades { ciudad = "CCS" },
-                new Ciudades { ciudad = "PTO" },
-                new Ciudades { ciudad = "MAT" },
-                new Ciudades { ciudad = "POR" },
-                new Ciudades { ciudad = "VAL" },
-                new Ciudades { ciudad = "BTO" }
+                new Ciudades { ciudad = "Maracaibo" },
+                new Ciudades { ciudad = "Caracas" },
+                new Ciudades { ciudad = "Los Roques" },
+                new Ciudades { ciudad = "Merida" },
+                new Ciudades { ciudad = "Barcelona" },
+                new Ciudades { ciudad = "Porlamar" },
+                new Ciudades { ciudad = "Maturin" }
             };
             return c;
 
