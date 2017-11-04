@@ -12,4 +12,7 @@
             <Button x:Name="Buscar" Text="Buscar vuelos..." Margin="10,30,10,30"  Clicked="Buscar_Clicked"  ></Button>
         </StackLayout>
     </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Buscar reserva"></ToolbarItem>
+    </ContentPage.ToolbarItems>
 </ContentPage>
