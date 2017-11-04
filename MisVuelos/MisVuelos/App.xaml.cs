@@ -31,6 +31,9 @@ namespace MisVuelos
         {
             InitializeComponent();
             //database.EliminarVuelos();
+            database.EliminarReservaciones();
+            database.EliminarClientes();
+
             IniciarVuelos();
             //MainPage = new ListaVuelosPage();
             MainPage = new NavigationPage(new MainPage());
@@ -58,7 +61,7 @@ namespace MisVuelos
                         {
                             if (item_d.ciudad.Trim() != item_o.ciudad.Trim())
                             {
-                                for (int i = 0; i < 5; i++)
+                                for (int i = 0; i < 50; i++)
                                 {
                                     DateTime fec_sal = DateTime.Now.AddDays(rnd.Next(1, 30)).AddHours(rnd.Next(1, 23)).AddMinutes(rnd.Next(1, 15));  //new DateTime(DateTime.Now.Year, mes, dia, hora, minuto, 0);
                                     _origen = item_o.ciudad;//destinos[rnd.Next(1, 7)].ciudad;

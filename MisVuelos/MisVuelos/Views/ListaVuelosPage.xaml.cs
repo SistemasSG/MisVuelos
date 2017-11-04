@@ -20,10 +20,10 @@ namespace MisVuelos.Views
            
         }
 
-        public ListaVuelosPage(string origen, string destino)
+        public ListaVuelosPage(string origen, string destino, int dia, int mes, int año)
         {
             InitializeComponent();
-            BuscarVuelos(origen, destino);
+            BuscarVuelos(origen, destino, dia, mes, año);
         }
 
         public ObservableCollection<Models.Vuelos> Lista
@@ -31,13 +31,20 @@ namespace MisVuelos.Views
             get;
             set;
         }
-        private async void BuscarVuelos(string origen, string destino)
+        private async void BuscarVuelos(string origen, string destino, int dia, int mes, int año)
         {
             try
             {
                 Lista = new ObservableCollection<Models.Vuelos>();
                 var client = await App.Database.GetVuelosAsync();
-                var lista = client.Where(x => x.origen.Trim() == origen.Trim() && x.destino.Trim() == destino.Trim()).ToList(); // && x.fecha.Value.Date == fecha.Date).ToList();
+                var lista = client.Where
+                                (
+                                    x => x.origen.Trim() == origen.Trim() && 
+                                    x.destino.Trim() == destino.Trim() &&
+                                    x.fecha.Value.Day == dia &&
+                                    x.fecha.Value.Month == mes &&
+                                    x.fecha.Value.Year == año
+                                    ).ToList(); // && x.fecha.Value.Date == fecha.Date).ToList();
 
                 foreach (var item in lista)
                 {
@@ -55,8 +62,12 @@ namespace MisVuelos.Views
 
         private void ListaVuelos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var Id_vuelo = (ListaVuelos.SelectedItem as Models.Vuelos).ID;
-            Navigation.PushAsync(new ReservarPage(Id_vuelo));
+            ((ListView)sender).SelectedItem = null;
+            if (((ListView)sender).SelectedItem == null)
+            {
+                var Id_vuelo = (ListaVuelos.SelectedItem as Models.Vuelos).ID;
+                Navigation.PushAsync(new ReservarPage(Id_vuelo));
+            }
         }
 
     }

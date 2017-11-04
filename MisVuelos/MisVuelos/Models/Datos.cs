@@ -41,6 +41,7 @@ namespace MisVuelos.Models
         public int id_cliente { get; set; }
         public int asientos { get; set; }
         public decimal pago { get; set; }
+        public DateTime fecha { get; set; }
     }
 
     public class Ciudades
@@ -51,5 +52,27 @@ namespace MisVuelos.Models
     public class Aerolineas
     {
         public string aerolinea { get; set; }
+    }
+
+    public class Datos_reserva
+    {
+        //Reserva
+        public string reserva { get; set; }
+        public int id_vuelo { get; set; }
+        public int id_cliente { get; set; }
+        public int asientos { get; set; }
+        public decimal pago { get; set; }
+        public DateTime fecha { get; set; }
+
+        //Vuelo
+        public string aerolinea { get; set; }
+        public string origen { get; set; }
+        public string destino { get; set; }
+        public DateTime? fecha_vuelo { get; set; }
+
+        //Cliente
+        public string Nombre { get; set; }
+        public int Cedula { get; set; }
+        public int Edad { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace MisVuelos.ViewModels
         {
             try
             {
-                ListaVuelos = new ObservableCollection<Models.Vuelos>();
+                //ListaVuelos = new ObservableCollection<Models.Vuelos>();
                 var client = await App.Database.GetVuelosAsync();
                 var lista = client.ToList();
 

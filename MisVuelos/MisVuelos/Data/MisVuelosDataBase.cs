@@ -76,6 +76,16 @@ namespace MisVuelos.Data
             return database.QueryAsync<Vuelos>("delete from Vuelos").IsCompleted;
         }
 
+        public bool EliminarReservaciones()
+        {
+            return database.QueryAsync<Vuelos>("delete from Reservaciones").IsCompleted;
+        }
+
+        public bool EliminarClientes()
+        {
+            return database.QueryAsync<Vuelos>("delete from Clientes").IsCompleted;
+        }
+
         public Task<int> RegistrarCliente(Clientes item)
         {
             if (item.ID != 0)
