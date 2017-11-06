@@ -62,50 +62,58 @@ namespace MisVuelos.Views
 
         private void buscar_reserva_Clicked(object sender, EventArgs e)
         {
-            if (pck_tipo.SelectedIndex == -1)
-            {
-                DisplayAlert("Error", "Elija un tipo de documento", "OK");
-            }
-            else
-            {
-                if (codigo.Text.Trim().Length == 0)
-                {
-                    DisplayAlert("Error", "Debe ingresar un numero de documento", "OK");
-                }
-                else
-                {
-                    int ci = pck_tipo.Items[pck_tipo.SelectedIndex].Trim() == "Cedula" ? Convert.ToInt32(codigo.Text) : 0;
-                    string reserva = pck_tipo.Items[pck_tipo.SelectedIndex].Trim() == "Cedula" ? "" : codigo.Text.Trim();
+            //database.EliminarReservaciones();
+            //database.EliminarVuelos();
+            //database.EliminarClientes();
+            int c = App.Database.GetClientesAsync().Result.ToList().Count;
+            int v = App.Database.GetVuelosAsync().Result.ToList().Count;
+            int r = App.Database.GetReservacionesAsync().Result.ToList().Count;
+            DisplayAlert("Info", "Clientes: " + c.ToString().Trim() + " - Vuelos: " + v.ToString().Trim() + " - Reservaciones: " + r.ToString().Trim(), "OK");
+            
+            //if (pck_tipo.SelectedIndex == -1)
+            //{
+            //    DisplayAlert("Error", "Elija un tipo de documento", "OK");
+            //}
+            //else
+            //{
+            //    if (codigo.Text.Trim().Length == 0)
+            //    {
+            //        DisplayAlert("Error", "Debe ingresar un numero de documento", "OK");
+            //    }
+            //    else
+            //    {
+            //        int ci = pck_tipo.Items[pck_tipo.SelectedIndex].Trim() == "Cedula" ? Convert.ToInt32(codigo.Text) : 0;
+            //        string reserva = pck_tipo.Items[pck_tipo.SelectedIndex].Trim() == "Cedula" ? "" : codigo.Text.Trim();
 
-                    bool ExisteCliente;
-                    bool ExisteReserva;
+            //        bool ExisteCliente;
+            //        bool ExisteReserva;
 
-                    if (ci > 0)
-                    {
-                        ExisteCliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == Convert.ToInt32(codigo.Text.Trim())).ToList().Count > 0 ? true : false;
-                        if (ExisteCliente == false)
-                        {
-                            DisplayAlert("Error", "El cliente no existe", "OK");
-                        }
-                        else
-                        {
-                            Navigation.PushAsync(new ReservacionesPage(ci, reserva));
-                        }
-                    }
-                    else
-                    {
-                        ExisteReserva = App.Database.GetReservacionAsync(0, codigo.Text.Trim()).Result.ToList().Count > 0 ? true : false;
-                        if (ExisteReserva == false)
-                        {
-                            DisplayAlert("Error", "El codigo de reserva no existe", "OK");
-                        }
-                        else
-                        {
-                            Navigation.PushAsync(new ReservacionesPage(ci, reserva));
-                        }
-                    }
-                }
-            }
+            //        if (ci > 0)
+            //        {
+            //            ExisteCliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == Convert.ToInt32(codigo.Text.Trim())).ToList().Count > 0 ? true : false;
+            //            if (ExisteCliente == false)
+            //            {
+            //                DisplayAlert("Error", "El cliente no existe", "OK");
+            //            }
+            //            else
+            //            {
+            //                Navigation.PushAsync(new ReservacionesPage(ci, reserva));
+            //            }
+            //        }
+            //        else
+            //        {
+            //            ExisteReserva = App.Database.GetReservacionAsync(0, codigo.Text.Trim()).Result.ToList().Count > 0 ? true : false;
+            //            if (ExisteReserva == false)
+            //            {
+            //                DisplayAlert("Error", "El codigo de reserva no existe", "OK");
+            //            }
+            //            else
+            //            {
+            //                Navigation.PushAsync(new ReservacionesPage(ci, reserva));
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private void pck_tipo_Unfocused(object sender, FocusEventArgs e)

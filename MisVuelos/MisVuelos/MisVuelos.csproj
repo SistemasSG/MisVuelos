@@ -94,9 +94,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Views\ListaVuelosPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

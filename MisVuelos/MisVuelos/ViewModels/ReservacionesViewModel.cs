@@ -60,8 +60,16 @@ namespace MisVuelos.ViewModels
                 else
                 {
                     var x_id_cliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == nro_ci).Select(x => x.ID).FirstOrDefault();
-                    Lista_reservaciones = App.Database.GetReservacionAsync(x_id_cliente, "").Result.ToList();
-                    cliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == nro_ci).FirstOrDefault();
+
+                    Lista_reservaciones = App.Database.GetReservacionAsync(x_id_cliente).Result.Where
+                        (
+                            x => x.fecha.Day == DateTime.Now.Day &&
+                            x.fecha.Month == DateTime.Now.Month &&
+                            x.fecha.Year == DateTime.Now.Year
+                        ).ToList();
+
+                    //Lista_reservaciones = App.Database.GetReservacionAsync(x_id_cliente, "").Result.ToList();
+                    cliente = App.Database.GetClientesAsync().Result.Where(x => x.ID == x_id_cliente).FirstOrDefault();
 
                     foreach (var item in Lista_reservaciones)
                     {

@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Xamarin.Forms;
-using MisVuelos.Droid;
+﻿using MisVuelos.Droid;
 using System.IO;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(FileHelper))]
 namespace MisVuelos.Droid
 {
-        
+
     public class FileHelper : IFileHelper
     {
         public string GetLocalFilePath(string filename)

@@ -39,10 +39,14 @@ namespace MisVuelos.Views
         {
             try
             {
-                var n = nombre.Text.ToString();
-                var c = Convert.ToInt32(cedula.Text);
-                var e = Convert.ToInt32(edad.Text);
-                _id_cliente = await App.Database.RegistrarCliente(
+                string n = nombre.Text.ToString();
+                int c = Convert.ToInt32(cedula.Text);
+                int e = Convert.ToInt32(edad.Text);
+
+                bool ExisteCliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == c).ToList().Count > 0;
+                if (ExisteCliente == false)
+                {
+                    _id_cliente = await App.Database.RegistrarCliente(
                     new Models.Clientes
                     {
                         Nombre = n,
@@ -50,6 +54,12 @@ namespace MisVuelos.Views
                         Edad = e
                     }
                     );
+                }
+                else
+                {
+                    _id_cliente = App.Database.GetClientesAsync().Result.Where(x => x.Cedula == c).FirstOrDefault().ID;
+                }
+                
                 if (ValidarReservasExistentes() == true)
                     await DisplayAlert("Mis Vuelos", "No puede hacer mas reservas por el dia de hoy." , "OK");
                 else
